@@ -1,0 +1,31 @@
+{
+  "name": "boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.583.0",
+    "@aws-sdk/client-s3": "^3.617.0",
+    "aws-sdk": "^2.983.0",
+    "axios": "^1.7.2",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mammoth": "^1.8.0",
+    "multer-s3": "^3.0.1",
+    "nodemon": "^3.1.4",
+    "openai": "^4.52.3",
+    "pdf-parse": "^1.1.1",
+    "serverless-http": "^3.2.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
+  }
+}

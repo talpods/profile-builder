@@ -1,0 +1,35 @@
+# "org" ensures this Service is used with the correct Serverless Framework Access Key.
+org: bakkar
+# "app" enables Serverless Framework Dashboard features and sharing them with other Services.
+app: talpodsauth
+# "service" is the name of this project. This will also be added to your AWS resource names.
+service: talpodsusermanager
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: eu-north-1
+  stage: dev
+
+functions:
+  auth:
+    handler: index.handler
+    events:
+      - httpApi:
+          path: /api/users
+          method: post
+      - httpApi:
+          path: /api/users
+          method: get
+      - httpApi:
+          path: /api/users/{email}
+          method: get
+      - httpApi:
+          path: /api/users
+          method: delete
+      - httpApi:
+          path: /api/users
+          method: put
+      - httpApi:
+          path: /api/users/update-password
+          method: post

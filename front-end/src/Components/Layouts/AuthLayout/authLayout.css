@@ -1,0 +1,27 @@
+.w-50 {
+  width: 50%;
+}
+.h-100 {
+  height: 100vh;
+}
+.left {
+  color: #08266b;
+  display: flex;
+  background-color: #e6e9f0;
+  background: url("../../../assets/bannerlines.png") no-repeat top;
+  padding-left: 100px;
+}
+.left h1 {
+  font-weight: bold;
+}
+.left img {
+  width: 200px;
+}
+.left h1 {
+  max-width: 500px;
+  font-size: 40px;
+}
+
+.right {
+  background-color: #051542;
+}

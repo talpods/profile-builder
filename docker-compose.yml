@@ -1,0 +1,70 @@
+version: "3.8"
+
+services:
+  auth:
+    build:
+      context: ./authentication
+      dockerfile: Dockerfile
+    container_name: auth_container
+    ports:
+      - "4000:4000" # Exposing port 4000
+    networks:
+      - app_network
+
+  frontend:
+    build:
+      context: ./front-end
+      dockerfile: Dockerfile
+    container_name: frontend_container
+    ports:
+      - "3000:3000" # Exposing port 3000
+    depends_on:
+      - auth
+      - user_manager
+      - profile_manager
+    networks:
+      - app_network
+
+  user_manager:
+    build:
+      context: ./user-manager
+      dockerfile: Dockerfile
+    container_name: user_manager_container
+    ports:
+      - "4040:4040" # Exposing port 4040
+    environment:
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_REGION=${AWS_REGION}
+      - PORT=${PORT}
+      - VALIDATE_URL=${VALIDATE_URL}
+      - DYNAMODB_TABLE=Profile_Builder
+      - PRIMARY_KEY=users
+      - SECONDARY_KEY=users
+    networks:
+      - app_network
+
+  profile_manager:
+    build:
+      context: ./profile-manager
+      dockerfile: Dockerfile
+    container_name: profile_manager_container
+    ports:
+      - "5000:5000" # Exposing port 5000
+    depends_on:
+      - auth
+    environment:
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_REGION=${AWS_REGION}
+      - PORT=${PORT}
+      - VALIDATE_URL=${VALIDATE_URL}
+      - DYNAMODB_TABLE=profileTable
+      - PRIMARY_KEY=users
+      - SECONDARY_KEY=users
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge

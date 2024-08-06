@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+* {
+  font-family: "IBM Plex Sans", sans-serif;
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+.re-generate-button {
+  width: 200px !important;
+}
+.login-page {
+  width: 500px;
+  padding: 50px 30px;
+  background: white;
+  text-align: center;
+  border-radius: 10px;
+}
+.login-page h1 {
+  font-weight: bold;
+  font-size: 25px;
+}

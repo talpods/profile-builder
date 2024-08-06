@@ -1,0 +1,77 @@
+org: talpod
+app: profile-manager-deployment
+service: profile-manager
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  stage: ${opt:stage, 'dev'}
+  region: eu-north-1
+  timeout: 60
+  deploymentBucket:
+    serverSideEncryption: AES256
+  environment:
+    AWS_ACCESS_KEY_ID1: ${env:AWS_ACCESS_KEY_ID1}
+    AWS_SECRET_ACCESS_KEY1: ${env:AWS_SECRET_ACCESS_KEY1}
+    AWS_REGION1: ${env:AWS_REGION1}
+    DYNAMODB_TABLE: ${env:DYNAMODB_TABLE}
+    VERSION: ${env:VERSION}
+    PRIMARY_KEY: ${env:PRIMARY_KEY}
+    AWS_PUBLIC_BUCKET: ${env:AWS_PUBLIC_BUCKET}
+    AWS_PRIVATE_BUCKET: ${env:AWS_PRIVATE_BUCKET}
+    SNS_TOPIC_ARN: ${env:SNS_TOPIC_ARN}
+    AWS_PUBLIC_BUCKET_LINK: ${env:AWS_PUBLIC_BUCKET_LINK}
+    VALIDATE_LINK: ${env:VALIDATE_LINK}
+    OPENAI_API_KEY: ${env:OPENAI_API_KEY}
+
+  iam:
+    role:
+      managedPolicies:
+        - "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:Query
+            - dynamodb:Scan
+            - dynamodb:GetItem
+            - dynamodb:PutItem
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+          Resource: "arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
+        - Effect: Allow
+          Action:
+            - s3:PutObject
+            - s3:GetObject
+            - s3:DeleteObject
+          Resource:
+            - "arn:aws:s3:::${self:provider.environment.AWS_PUBLIC_BUCKET}/*"
+            - "arn:aws:s3:::${self:provider.environment.AWS_PRIVATE_BUCKET}/*"
+        - Effect: Allow
+          Action:
+            - sns:Publish
+          Resource: ${self:provider.environment.SNS_TOPIC_ARN}
+        - Effect: Allow
+          Action:
+            - codecommit:GetBranch
+            - codecommit:GetCommit
+            - codecommit:GetRepository
+            - codecommit:ListBranches
+          Resource: arn:aws:codecommit:${self:provider.region}:471112600147:profile-builder
+
+functions:
+  api:
+    handler: lambda.handler
+    timeout: 90
+    events:
+      - http:
+          path: /{proxy+}
+          method: ANY
+          cors: true
+          binaryMediaTypes:
+            - "image/jpeg"
+            - "image/png"
+            - "image/jpg"
+            - "image/svg+xml"
+            - "application/pdf"
+            - "application/msword"
+            - "application/vnd.openxmlformats-officedocument.wordprocessingml.document"

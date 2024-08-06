@@ -1,0 +1,19 @@
+.form {
+  background: #fff;
+  padding: 50px 30px;
+  border-radius: 7px;
+}
+.form label {
+  font-size: 17px !important;
+  font-weight: 600;
+}
+.w-50 {
+  width: 50%;
+  padding-right: 40px;
+}
+.w-full{
+  width: 100%;
+}
+.w-50:last-child {
+  padding-right: 0;
+}

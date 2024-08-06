@@ -1,0 +1,14 @@
+org: talpds
+app: devcrew
+service: profile-generator
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: eu-north-1
+  stage: ${opt:stage, 'dev'}
+
+functions:
+  generateProfile:
+    handler: index.handler
+    timeout: 600 # 10 minutes in seconds

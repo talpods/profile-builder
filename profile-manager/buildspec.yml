@@ -1,0 +1,23 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: 20
+  pre_build:
+    commands:
+      - echo "Current directory contents:"
+      - cd ./profile-manager
+      - ls -la
+      - npm install -g serverless
+      - npm install
+  build:
+    commands:
+      - echo "Deploying with Serverless Framework..."
+      - serverless deploy --stage $STAGE --verbose
+  post_build:
+    commands:
+      - echo "Build completed on `date`"
+
+artifacts:
+  files:
+    - "**/*"
