@@ -25,7 +25,8 @@ This project was proudly developed by the following team members: Project built 
 The Profile Builder project consists of four main Lambda functions and a frontend developed using React, Redux, Ant Design, and Tailwind CSS. Each Lambda function is managed with its own `serverless.yaml` file, facilitating easy deployment and management with the Serverless Framework.
 
 ## AWS Architecture
-![aws2 drawio (1)](https://github.com/user-attachments/assets/90a881f9-4b9d-43db-b2a8-31a94d02ad52)
+![aws2 drawio (2)](https://github.com/user-attachments/assets/8a09cea5-904b-4a5f-bb13-561b7bacd178)
+
 
 ## Getting Started
 
