@@ -1,0 +1,21 @@
+{
+  "name": "profile-builder",
+  "version": "1.0.0",
+  "description": "Welcome to the Profile Builder project! This project is an internal initiative developed by the Talpods team. The TalPods internal recruitment team faced challenges in creating optimal profiles for talents to present to potential company hiring managers, taking extensive hours to complete. The profile builder tool aimed to reduce this time to less than 15 minutes. The team developed the profile page using a structured data model and a design validated through testing with customers. In the second sprint, the team was divided to create a dashboard tool that enables profile creation using ChatGPT APIs. As a result, the system now allows profile creation in less than 4 minutes.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prettier": "npx prettier --write .",
+    "prepare": "husky install && chmod ug+x .husky/*"
+  },
+  "author": "",
+  "license": "ISC",
+  "lint-staged": {
+    "*.{ts,js,jsx,tsx,html,css,scss,json}": "prettier --write"
+  },
+  "devDependencies": {
+    "prettier": "3.0.0",
+    "husky": "8.0.3",
+    "lint-staged": "13.2.3"
+  }
+}
