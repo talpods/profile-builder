@@ -1,6 +1,6 @@
 # Profile Builder
 
-Welcome to the Profile Builder project! This project is an internal initiative developed by the Talpods team. The TalPods internal recruitment team faced challenges in creating optimal profiles for talents to present to potential company hiring managers, taking extensive hours to complete. The profile builder tool aimed to reduce this time to less than 15 minutes. The team developed the profile page using a structured data model and a design validated through testing with customers. In the second sprint, the team was divided to create a dashboard tool that enables profile creation using ChatGPT APIs. As a result, the system now allows profile creation in less than 4 minutes.
+Welcome to the Profile Builder project! The TalPods internal recruitment team faced challenges in creating optimal profiles for talents to present to potential company hiring managers, taking extensive hours to complete. The profile builder tool aimed to reduce this time to less than 15 minutes. The team developed the profile page using a structured data model and a design validated through testing with customers. In the second sprint, the team was divided to create a dashboard tool that enables profile creation using ChatGPT APIs. As a result, the system now allows profile creation in less than 4 minutes.
 
 Originally, it was developed using AWS CodeCommit, and now we have migrated it to GitHub for better collaboration and visibility.
 
