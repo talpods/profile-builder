@@ -2,6 +2,10 @@
 
 Welcome to the Profile Builder project! This project is an internal initiative developed by the Talpods team. Originally, it was developed using AWS CodeCommit, and now we have migrated it to GitHub for better collaboration and visibility.
 
+## Project Description
+
+The Profile Builder is a tool that leverages Generative AI to help recruiters build detailed profiles in less than 10 minutes. By uploading a candidate's resume, the AI generates comprehensive details, streamlining the profile creation process.
+
 ## Team Members
 
 This project was proudly developed by the following team members:
