@@ -1,7 +1,7 @@
 import profileValidator from "../validators/profileValidator.js";
 import FileUploadHelper from "../helpers/fileUploadHelper.js";
 import ProfileService from "../services/profile.service.js";
-import NotificationService from "../services/notificationService.js";
+import NotificationService from "../services/notification.service.js";
 
 class UpdatedProfile {
   static async updatedProfile(req) {

@@ -1,11 +1,7 @@
 import express from "express";
-import cors from "cors"; // Import CORS package
+import cors from "cors";
 import { config } from "./config/config.js";
-import profilesRouter from "./routes/profiles.js";
-import profileRouter from "./routes/profile.js";
-import fileRouter from "./routes/fileRouter.js";
-import slugRoutes from "./routes/slugRoutes.js";
-import profileNbRouter from "./routes/profileNb.js";
+import router from "./routes/routes.js";
 
 const app = express();
 
@@ -16,25 +12,15 @@ app.use(express.urlencoded({ extended: true }));
 // CORS configuration
 app.use(
   cors({
-    origin: "*", // Allow all origins
-    methods: ["GET", "POST", "PUT", "DELETE"], // Allow all HTTP methods
-    allowedHeaders: ["Content-Type", "Authorization, refreshToken"], // Allow headers for authentication and content-type
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization, refreshToken"],
   })
 );
 
 const version = config.version;
 
-// Routes
-app.use(`/v1/profiles`, profilesRouter);
-app.use(`/v1/profile`, profileRouter);
-app.use(`/v1/files`, fileRouter);
-app.use(`/profiles`, slugRoutes);
-app.use(`/profileNb`, profileNbRouter);
-
-// Start the server
-// const PORT = 5000;
-// app.listen(PORT, () => {
-//   console.log(`Server is running on port ${PORT}`);
-// });
+// Use the consolidated routes
+app.use("/", router);
 
 export default app;

@@ -2,12 +2,12 @@ import CreateProfileUseCase from "../../usecases/createProfileUseCase";
 import profileValidator from "../../validators/profileValidator";
 import ProfileService from "../../services/profile.service";
 import FileUploadHelper from "../../helpers/fileUploadHelper";
-import NotificationService from "../../services/notificationService";
+import NotificationService from "../../services/notification.service";
 
 jest.mock("../../validators/profileValidator");
 jest.mock("../../services/profile.service");
 jest.mock("../../helpers/fileUploadHelper");
-jest.mock("../../services/notificationService");
+jest.mock("../../services/notification.service");
 
 describe("CreateProfileUseCase", () => {
   let mockReq;

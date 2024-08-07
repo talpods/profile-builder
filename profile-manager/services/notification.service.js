@@ -7,7 +7,7 @@ class NotificationService {
       TopicArn: config.snsTopicArn,
       Message: JSON.stringify(slug),
     };
-    
+
     try {
       await snsClient.publish(params).promise();
       console.log("Profile created notification sent successfully");
