@@ -10,7 +10,7 @@ The Profile Builder is a tool that leverages Generative AI to help recruiters bu
 
 ## Team Members
 
-This project was proudly developed by the following team members: Project built by a team of passionate young engineers as part of the first [Cohort of TalPods-Jusoor Tech Talent Pipeline](https://talpods.io/talpods-jusoor-tech-talent-pipeline.html) project
+Project built by a team of passionate young engineers as part of the first [Cohort of TalPods-Jusoor Tech Talent Pipeline](https://talpods.io/talpods-jusoor-tech-talent-pipeline.html) project
 
 - [mhmmdkhoulani](https://github.com/mhmmdkhoulani)
 - [FaisalMinawi](https://github.com/FaisalMinawi)
