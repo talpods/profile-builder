@@ -29,7 +29,7 @@ The Profile Builder project consists of four main Lambda functions and a fronten
 JavaScript, Node JS Dynamo DB, React JS, Ant Design, Redux Toolkit, HTML, CSS, Tailwind CSS, Serverless JS, Openai API, Express JS, EJS, AWS Lambda, AWS S3, CloudFront, Code Commit for Git, CI/CD using AWS Code Build and Code Pipeline
 
 ## AWS Architecture
-![aws2 drawio](https://github.com/user-attachments/assets/f339026b-7368-4bd6-a014-abb4ee216cb6)
+![aws2 drawio](https://github.com/user-attachments/assets/800538fa-ec0d-437e-8d64-b828db079a95)
 
 
 ## Getting Started
