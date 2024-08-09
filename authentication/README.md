@@ -1,6 +1,6 @@
-# Authentication Lambda Function
+# Authorization Lambda Function
 
-This Lambda function handles authentication-related operations such as login, logout, token refresh, and user validation using JWT tokens.
+This Lambda function is responsible for handling user authentication, including login, logout, token refresh, and user validation using JWT tokens. The function is built following clean architecture principles.
 
 ## Routes
 
@@ -14,6 +14,8 @@ This Lambda function handles authentication-related operations such as login, lo
 
 - Node.js installed on your machine.
 - npm or yarn installed.
+- Docker installed if running with Docker.
+- Serverless Framework installed if deploying with Serverless.
 
 ## Environment Variables
 
@@ -24,8 +26,6 @@ PORT=4000
 ```
 
 ## Running the Lambda Function Locally
-
-To run this Lambda function locally, follow these steps:
 
 ### 1. Install Dependencies
 
@@ -42,7 +42,7 @@ Uncomment the following lines in `index.js` to run the Express server locally:
 ```javascript
 // const PORT = config.port || 4000;
 // app.listen(PORT, () => {
-//  console.log(`Server is running on port ${PORT}`);
+//     console.log(`Server is running on port ${PORT}`);
 // });
 
 // module.exports = app;
@@ -61,14 +61,45 @@ The server will start on `http://localhost:4000`.
 You can now test the routes using a tool like Postman or cURL. For example:
 
 - **Login**: `POST http://localhost:4000/api/login`
-- **Validate Token**: `GET http://localhost:4000/api/validate` (with Authorization header)
+- **Logout**: `PUT http://localhost:4000/api/logout`
+- **Refresh Token**: `PUT http://localhost:4000/api/refresh-token`
+- **Validate Token**: `GET http://localhost:4000/api/validate`
+- **Get User Info**: `GET http://localhost:4000/api/me`
 
-### 4. Deploying to AWS Lambda
+Make sure to include a valid JWT token in the `Authorization` header for all requests, except for the `/api/login` route.
 
-When you're ready to deploy, make sure to comment out the local server lines and use the `serverless` export:
+## Running the Lambda Function with Docker
 
-```javascript
-exports.handler = serverless(app);
+### 1. Build the Docker Image
+
+Navigate to the directory containing the Dockerfile and build the Docker image:
+
+```bash
+docker build -t auth-lambda .
 ```
 
-Then deploy the function using your preferred deployment method (e.g., AWS SAM, Serverless Framework).
+### 2. Run the Docker Container
+
+Run the Docker container:
+
+```bash
+docker run -p 4000:4000 auth-lambda
+```
+
+The server will start on `http://localhost:4000`.
+
+## Deploying the Lambda Function with Serverless Framework
+
+### 1. Configure the Serverless Framework
+
+Ensure that your `serverless.yml` file is correctly set up
+
+### 2. Deploy the Lambda Function
+
+Deploy the Lambda function to AWS using the Serverless Framework:
+
+```bash
+serverless deploy
+```
+
+This will deploy the function to AWS and set up the corresponding API Gateway routes.
